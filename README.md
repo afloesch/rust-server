@@ -63,7 +63,7 @@ client.connect localhost:28015
 When the ownerid is properly set in the `users.cfg` file you can access the Carbon admin interface in game by opening chat and typing `/cp` or `/cpanel`. Carbon provides a number of useful quality of life features out of the box which would require multiple mods to duplicate when using Oxide, such as:
 
 - Permissions management.
-- Various admin tools like invisiblity or teleport.
+- Various admin tools like invisiblity, teleport, user kick, and user ban.
 - Gather settings.
 - Item stack size settings.
 - And many more...
