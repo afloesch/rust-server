@@ -1,0 +1,42 @@
+name: rust
+
+services:
+  rust-server:
+    image: rust-server-carbon
+    container_name: rust-server
+    command:
+      - "-batchmode"
+      - "-nographics"
+      - "+server.ip"
+      - "0.0.0.0"
+      - "+server.port"
+      - "28015"
+      - "+server.hostname"
+      - "Testserver"
+      - "+server.maxplayers"
+      - "5"
+      - "+server.worldsize"
+      - "4500"
+      - "+server.gamemode"
+      - "vanilla"
+      - "+server.seed"
+      - "1606026731"
+      - "+rcon.ip"
+      - "0.0.0.0"
+      - "+rcon.port"
+      - "28016"
+      - "+rcon.password"
+      - "supersecret"
+      - "+rcon.web"
+      - "1"
+      - "+server.identity"
+      - "testserver"
+    ports:
+      - "28015:28015/udp"
+      - "28016:28016/tcp"
+    volumes:
+      - ./state/server:/srv/rust/server
+      - ./state/carbon/configs:/srv/rust/carbon/configs
+      - ./state/carbon/data:/srv/rust/carbon/data
+      - ./state/carbon/extensions:/srv/rust/carbon/extensions
+      - ./state/carbon/plugins:/srv/rust/carbon/plugins
