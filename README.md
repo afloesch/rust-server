@@ -22,9 +22,9 @@ docker build -f carbon.Dockerfile -t rust-server-carbon .
 
 Use the docker compose file to start the server and setup the server config files. The docker compose file is setup to use the Carbon image. If you want to run the vanilla server instead change the image in the docker compose file.
 
-Update the ownerid information in the `config/users.cfg` file. Add your Steam ID and username where specified in the file. Your Steam ID can be found under the "Account Details" tab in Steam.
+Update the ownerid information in the [`config/users.cfg`](config/users.cfg) file. Add your Steam ID and username where specified in the file. Your Steam ID can be found under the "Account Details" tab in Steam.
 
-You can also change or add Rust server ConVars in the `config/server.cfg` file.
+You can also change or add Rust server ConVars in the [`config/server.cfg`](config/server.cfg) file.
 
 ```sh
 docker-compose up -d
