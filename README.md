@@ -57,3 +57,9 @@ To connect to the Rust server when running locally, start the game and open the 
 ```
 client.connect localhost:28015
 ```
+
+## Using Carbon
+
+When the ownerid is properly set in the `users.cfg` file you can access the Carbon admin interface in game by opening chat and typing `/cp` or `/cpanel`. Carbon provides a number of useful quality of life features for administration. 
+
+See the [Carbon](https://carbonmod.gg/) documentation for more info.
