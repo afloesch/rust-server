@@ -1,9 +1,22 @@
 name: rust
 
 services:
+  init-config:
+    image: alpine:latest
+    container_name: init-config
+    command:
+      - "/bin/sh"
+      - "-c"
+      - "mkdir -p /srv/rust/server/${SERVER_IDENTITY:-main}/cfg && cp /var/tmp/* /srv/rust/server/${SERVER_IDENTITY:-main}/cfg/"
+    volumes:
+      - server:/srv/rust/server
+      - ./config:/var/tmp
+
   rust-server:
     image: rust-server-carbon
     container_name: rust-server
+    depends_on:
+      - init-config
     command:
       - "-batchmode"
       - "-nographics"
@@ -11,16 +24,6 @@ services:
       - "0.0.0.0"
       - "+server.port"
       - "28015"
-      - "+server.hostname"
-      - "Testserver"
-      - "+server.maxplayers"
-      - "5"
-      - "+server.worldsize"
-      - "4500"
-      - "+server.gamemode"
-      - "vanilla"
-      - "+server.seed"
-      - "1606026731"
       - "+rcon.ip"
       - "0.0.0.0"
       - "+rcon.port"
@@ -30,13 +33,14 @@ services:
       - "+rcon.web"
       - "1"
       - "+server.identity"
-      - "testserver"
+      - "${SERVER_IDENTITY:-main}"
     ports:
       - "28015:28015/udp"
       - "28016:28016/tcp"
     volumes:
-      - ./state/server:/srv/rust/server
-      - ./state/carbon/configs:/srv/rust/carbon/configs
-      - ./state/carbon/data:/srv/rust/carbon/data
-      - ./state/carbon/extensions:/srv/rust/carbon/extensions
-      - ./state/carbon/plugins:/srv/rust/carbon/plugins
+      - server:/srv/rust/server
+      - carbon:/srv/rust/carbon
+
+volumes:
+  server:
+  carbon:

@@ -11,6 +11,7 @@ RUN apt-get update \
     ca-certificates \
     netcat-traditional \
     gettext-base \
+    vim \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /srv/rust
