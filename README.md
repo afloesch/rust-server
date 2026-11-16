@@ -1,5 +1,13 @@
 # Rust Server in Docker
 
+## Setup
+
+1) Install [docker desktop](https://www.docker.com/products/docker-desktop/).
+
+2) Clone or download this repository to your local file system.
+
+3) Follow the steps below to build the docker images and run the server.
+
 ## Build
 
 Docker commands to build the Rust server binary into a docker image, or the Rust server with [Carbon](https://carbonmod.gg/) included.
@@ -10,6 +18,8 @@ Docker commands to build the Rust server binary into a docker image, or the Rust
 docker build -f server.Dockerfile -t rust-server .
 ```
 
+This will fetch the latest Rust server binary published on Steam and install it to a linux based container image.
+
 ### Carbon
 
 > The Carbon image depends on the vanilla Rust server build, so build the Rust server image first.
@@ -17,6 +27,8 @@ docker build -f server.Dockerfile -t rust-server .
 ```sh
 docker build -f carbon.Dockerfile -t rust-server-carbon .
 ```
+
+This will fetch and install the latest Carbon production release published to GitHub into the Rust server container image.
 
 ## Run
 
@@ -36,4 +48,12 @@ By default the server identity used is `main`, but this can be changed by settin
 SERVER_IDENTITY="devserver" docker-compose up -d
 ```
 
-Depending on the map size and seed used it may take some time for the server to generate the map on the first startup.
+Depending on the map size and seed used it may take some time for the server to generate the map on first startup.
+
+## Connect
+
+To connect to the Rust server when running locally, start the game and open the console by pressing F1. In the console type the following and hit enter:
+
+```
+client.connect localhost:28015
+```
