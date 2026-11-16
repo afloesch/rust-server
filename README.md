@@ -1,5 +1,9 @@
 # Rust Server in Docker
 
+Dockerfiles and a docker compose file to run a vanilla Rust server, or a Rust server with the [Carbon](https://carbonmod.gg/) modding framework.
+
+I make no promises to keep this repo maintained when Facepunch or Carbon break things, but you are free to fork this repo and modify to your needs, or submit a pull request to fix things if/when they release a breaking change.
+
 ## Setup
 
 1) Install [docker desktop](https://www.docker.com/products/docker-desktop/).
@@ -22,7 +26,7 @@ This will fetch the latest Rust server binary published on Steam and install it 
 
 ### Carbon
 
-> The Carbon image depends on the vanilla Rust server build, so build the Rust server image first.
+> Note: The Carbon image depends on the vanilla Rust server build, so build the Rust server image first.
 
 ```sh
 docker build -f carbon.Dockerfile -t rust-server-carbon .
@@ -38,6 +42,8 @@ Update the ownerid information in the [`config/users.cfg`](config/users.cfg) fil
 
 You can also change or add Rust server ConVars in the [`config/server.cfg`](config/server.cfg) file.
 
+### Start Server
+
 ```sh
 docker-compose up -d
 ```
@@ -49,6 +55,20 @@ SERVER_IDENTITY="devserver" docker-compose up -d
 ```
 
 Depending on the map size and seed used it may take some time for the server to generate the map on first startup.
+
+### Stop Server
+
+> Note: When stopping the server you may lose progress if a recent save state was not created. To force the server to save open the console in game with F1 and submit the command `server.save` before quitting and shutting down the server.
+
+To stop the server and preserve the game state:
+```sh
+docker-compose down
+```
+
+To stop the server and delete everything:
+```sh
+docker-compose down --volumes
+```
 
 ## Connect
 
