@@ -42,7 +42,7 @@ This will fetch and install the latest Carbon production release published to Gi
 
 ## Run
 
-Use the docker compose file to start the server and setup the server config files. The docker compose file is setup to use the Carbon image. If you want to run the vanilla server instead change the image in the docker compose file.
+Use the docker compose file to start the server and setup the server config files. The docker compose file is setup to use the Carbon image. If you want to run the vanilla server instead change the image in the docker compose file [here](https://github.com/afloesch/rust-server/blob/main/docker-compose.yml#L27), from "rust-server-carbon" to "rust-server".
 
 Update the ownerid information in the [`config/users.cfg`](config/users.cfg) file. Add your Steam ID and username where specified in the file. Your Steam ID can be found under the "Account Details" tab in Steam.
 
