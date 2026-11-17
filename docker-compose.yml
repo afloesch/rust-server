@@ -7,10 +7,21 @@ services:
     command:
       - "/bin/sh"
       - "-c"
-      - "mkdir -p /srv/rust/server/${SERVER_IDENTITY:-main}/cfg && cp /var/tmp/* /srv/rust/server/${SERVER_IDENTITY:-main}/cfg/"
+      - "mkdir -p /srv/rust/server/${SERVER_IDENTITY:-main}/cfg && cp /tmp/* /srv/rust/server/${SERVER_IDENTITY:-main}/cfg/"
     volumes:
       - server:/srv/rust/server
-      - ./config:/var/tmp
+      - ./config:/tmp
+
+  init-mods:
+    image: cirrusci/wget:latest
+    container_name: init-mods
+    command:
+      - "/bin/sh"
+      - "-c"
+      - "/tmp/update.sh && cp /tmp/plugins/*.cs /srv/rust/carbon/plugins/"
+    volumes:
+      - carbon:/srv/rust/carbon
+      - ./mods:/tmp
 
   rust-server:
     image: rust-server-carbon
