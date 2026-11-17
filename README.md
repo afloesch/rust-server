@@ -1,6 +1,12 @@
 # Rust Server in Docker
 
-Dockerfiles and a docker compose file to run a vanilla Rust server, or a Rust server with the [Carbon](https://carbonmod.gg/) modding framework.
+Dockerfiles and a docker compose file to run a vanilla Rust server, or a Rust server with the [Carbon](https://carbonmod.gg/) modding framework. Carbon provides a number of useful quality of life features out of the box which would require multiple mods to duplicate when using Oxide, such as:
+
+- Permissions management.
+- Various admin tools like invisiblity, teleport, user kick, and user ban.
+- Gather settings.
+- Item stack size settings.
+- And many more...
 
 I make no promises to keep this repo maintained when Facepunch or Carbon break things, but you are free to fork this repo and modify to your needs, or submit a pull request to fix things if/when they release a breaking change.
 
@@ -80,12 +86,12 @@ client.connect localhost:28015
 
 ## Using Carbon
 
-When the ownerid is properly set in the `users.cfg` file you can access the Carbon admin interface in game by opening chat and typing `/cp` or `/cpanel`. Carbon provides a number of useful quality of life features out of the box which would require multiple mods to duplicate when using Oxide, such as:
-
-- Permissions management.
-- Various admin tools like invisiblity, teleport, user kick, and user ban.
-- Gather settings.
-- Item stack size settings.
-- And many more...
+When the ownerid is properly set in the `users.cfg` file you can access the Carbon admin interface in game by opening chat and typing `/cp` or `/cpanel`.
 
 See the [Carbon](https://carbonmod.gg/) documentation for more info.
+
+### Managing Plugins
+
+Carbon provides tools to manage plugins obtained from [Codefling](https://codefling.com/mods) or [uMod](https://umod.org/plugins) within the admin panel. 
+
+This project also provides some simple options for managing plugins from the host machine. See the [mods/README.md](mods/README.md) for more info on adding plugins to the server.
