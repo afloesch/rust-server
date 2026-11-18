@@ -18,7 +18,7 @@ services:
     command:
       - "/bin/sh"
       - "-c"
-      - "/tmp/update.sh && cp /tmp/plugins/*.cs /srv/rust/carbon/plugins/"
+      - "wget -N -i /tmp/mod-list.txt -P /srv/rust/carbon/plugins/ && cp /tmp/plugins/*.cs /srv/rust/carbon/plugins/"
     volumes:
       - carbon:/srv/rust/carbon
       - ./mods:/tmp
