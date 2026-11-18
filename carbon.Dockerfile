@@ -7,7 +7,9 @@ RUN apt-get update \
 
 WORKDIR /tmp/carbon
 
-RUN wget https://github.com/CarbonCommunity/Carbon/releases/download/production_build/Carbon.Linux.Release.tar.gz -O carbon.tar.gz && tar -xzvf carbon.tar.gz
+RUN wget https://github.com/CarbonCommunity/Carbon/releases/download/production_build/Carbon.Linux.Release.tar.gz -O carbon.tar.gz
+
+RUN tar -xzvf carbon.tar.gz
 
 RUN rm carbon.tar.gz
 
@@ -22,8 +24,6 @@ RUN apt-get update \
 
 COPY --from=mod-stage /tmp/carbon /srv/rust
 
-COPY run-carbon.sh /srv/rust/run-carbon.sh
+RUN chmod +x /srv/rust/carbon.sh
 
-RUN chmod +x /srv/rust/run-carbon.sh
-
-ENTRYPOINT ["/srv/rust/run-carbon.sh"]
+ENTRYPOINT ["/srv/rust/carbon.sh"]
