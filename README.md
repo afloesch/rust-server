@@ -60,7 +60,7 @@ By default the server identity used is `main`, but this can be changed by settin
 SERVER_IDENTITY="devserver" docker-compose up -d
 ```
 
-Depending on the map size and seed used it may take some time for the server to generate the map on first startup.
+Depending on the map size and seed used it may take some time for the server to generate the map on first startup. See [rustmaps.com](https://rustmaps.com/) to preview maps for different sizes and seed values. The minimum map size needed for a map with all monuments is 4250. The bigger the map the more memory your server will need. Docker desktop provides a summary of the machine resources utilized by containers under the "containers" tab.
 
 ### Stop Server
 
