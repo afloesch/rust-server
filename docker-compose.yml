@@ -48,6 +48,9 @@ services:
     ports:
       - "28015:28015/udp"
       - "28016:28016/tcp"
+      - "28016:28016/udp"
+      - "28017:28017/udp"
+      - "28082:28082/tcp"
     volumes:
       - server:/srv/rust/server
       - carbon:/srv/rust/carbon
