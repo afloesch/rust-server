@@ -3,7 +3,7 @@
 Dockerfiles and a docker compose file to run a vanilla Rust server, or a Rust server with the [Carbon](https://carbonmod.gg/) modding framework. Carbon provides a number of useful quality of life features out of the box which would require multiple mods to duplicate when using Oxide, such as:
 
 - Permissions management.
-- Various admin tools like invisiblity, teleport, user kick, and user ban.
+- Various admin tools like invisibility, teleport, user kick, and user ban.
 - Gather settings.
 - Item stack size settings.
 - And many more...
